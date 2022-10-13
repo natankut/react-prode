@@ -1,14 +1,16 @@
-import './App.css';
-import SignIn from './components/SignIn/SignIn';
-import SignUp from './components/SignUp/SignUp';
+import Navigation from './routes/Navigation';
+import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
+
 
 function App() {
+  const theme = createTheme();
   return (
-    <div className="App">
-      <SignIn/>
-      
-      <SignUp/>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <div className="App">
+        <Navigation/>
+      </div>
+    </ThemeProvider>
   );
 }
 
