@@ -12,7 +12,7 @@ function Copyright(props: any) {
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="/">
-        Your Website
+        elProde.com
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -39,82 +39,86 @@ export default function SignUp() {
             <Box component='img' src={goalSide} alt="logo" sx={{width:'100%', objectFit:'cover', height:'100%', objectPosition:'10%' }} />            
           </Grid>
           <Grid item lg={5} sx={{px:'58px', pt:'66px',pb:'16px',display:'flex',flexDirection:'column', justifyContent:'space-between'}}>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                  }}
-                >
-                  <Box sx={{marginBottom: '24px'}}><img src={logo} alt='logo del prode' /></Box>
-                  <Typography sx={{fontFamily:'Roboto, sans-serif',mb:'6px' }} component="h1" variant="h5">
-                    Registrate amigo
-                  </Typography>
-                  <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-                    <Grid container spacing={2}>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          autoComplete="given-name"
-                          name="firstName"
-                          required
-                          fullWidth
-                          id="firstName"
-                          label="First Name"
-                          autoFocus
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          required
-                          fullWidth
-                          id="lastName"
-                          label="Last Name"
-                          name="lastName"
-                          autoComplete="family-name"
-                        />
-                      </Grid>
-                      <Grid item xs={12}>
-                        <TextField
-                          required
-                          fullWidth
-                          id="email"
-                          label="Email Address"
-                          name="email"
-                          autoComplete="email"
-                        />
-                      </Grid>
-                      <Grid item xs={12}>
-                        <TextField
-                          required
-                          fullWidth
-                          name="password"
-                          label="Password"
-                          type="password"
-                          id="password"
-                          autoComplete="new-password"
-                        />
-                      </Grid>
-                    </Grid>
-                    <Button
-                      type="submit"
-                      fullWidth
-                      variant="contained"
-                      sx={{ mt: 3, mb: 2 }}
-                    >
-                      Sign Up
-                    </Button>
-                    <Grid container justifyContent="flex-end">
-                      <Grid item>
-                        <Link href="/sign-in" variant="body2">
-                          Already have an account? Sign in
-                        </Link>
-                      </Grid>
-                    </Grid>
-                  </Box>
-                </Box>
-                <Copyright />
-            </Grid>
-        </Grid>      
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+              }}
+            >
+              <Box sx={{marginBottom: '24px'}}>
+                <Link href="/">
+                  <img src={logo} alt='logo del prode' />
+                </Link>
+              </Box>
+              <Typography sx={{fontFamily:'Roboto, sans-serif',mb:'6px' }} component="h1" variant="h5">
+                Registrate amigo
+              </Typography>
+              <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    autoComplete="given-name"
+                    name="firstName"
+                    required
+                    fullWidth
+                    id="firstName"
+                    label="First Name"
+                    autoFocus
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="lastName"
+                    label="Last Name"
+                    name="lastName"
+                    autoComplete="family-name"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="email"
+                    label="E-mai"
+                    name="email"
+                    autoComplete="email"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    name="password"
+                    label="Password"
+                    type="password"
+                    id="password"
+                    autoComplete="new-password"
+                  />
+                </Grid>
+              </Grid>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Sign Up
+              </Button>
+              <Grid container justifyContent="flex-end">
+                <Grid item>
+                  <Link href="/sign-in" variant="body2">
+                  Ya tenes una cuenta amiga? Logueate noma’
+                  </Link>
+                </Grid>
+              </Grid>
+            </Box>
+          </Box>
+          <Copyright />
+        </Grid>
+      </Grid>      
     </Box>
   );
 }
