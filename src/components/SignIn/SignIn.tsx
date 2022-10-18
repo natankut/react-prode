@@ -7,6 +7,8 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { logo, goalSide  } from '../../img';
+import { useState } from 'react';
+import axios from 'axios';
 function Copyright(props: any) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -19,17 +21,35 @@ function Copyright(props: any) {
     </Typography>
   );
 }
-
+const URL = 'http://localhost:3000/auth/login';
 
 export default function SignIn() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  
+  const store = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    await axios.post(URL, {
+      email: email,
+      password: password
+    })
+    .then(function (response) {
+      console.log(response);
+      alert(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
     });
-  };
+  }
+
+  // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
+  //   const data = new FormData(event.currentTarget);
+  //   console.log({
+  //     email: data.get('email'),
+  //     password: data.get('password'),
+  //   });
+  // };
 
   return (
     <Box sx={{display:'flex', minHeight:'100vh'}}>
@@ -53,7 +73,7 @@ export default function SignIn() {
             <Typography component="h1" variant="h5">
               Logueate amigo
             </Typography>
-            <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 3 }}>
+            <Box component="form" onSubmit={store} noValidate sx={{ mt: 3 }}>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
                   <TextField
@@ -64,7 +84,10 @@ export default function SignIn() {
                     label="E-mail"
                     name="email"
                     autoComplete="email"
+                    type="email"
                     autoFocus
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -77,6 +100,8 @@ export default function SignIn() {
                     type="password"
                     id="password"
                     autoComplete="current-password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
                   />
                 </Grid>
                 <Grid item xs={12}>
